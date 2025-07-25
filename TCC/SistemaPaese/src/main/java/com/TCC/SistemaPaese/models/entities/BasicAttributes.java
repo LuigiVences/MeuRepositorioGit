@@ -7,54 +7,42 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
+import javax.annotation.processing.Generated;
+
 @MappedSuperclass
 public abstract class BasicAttributes {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     @Column(name = "active", nullable = false)
     protected Boolean active = true;
     @CreationTimestamp
-    @Column(name = "creattion_date", nullable = false)
+    @Column(name = "creation_date", nullable = false)
     protected LocalDateTime createdDate;
     @Column(name = "deactivation_date")
     protected LocalDateTime deactivationDate;
 
-    public BasicAttributes() {
+    protected BasicAttributes() {
     }
 
-    public BasicAttributes(Long id, Boolean active, LocalDateTime createdDate,
-                           LocalDateTime deactivationDate) {
-        this.id = id;
-        this.active = active;
-        this.createdDate = createdDate;
-        this.deactivationDate = deactivationDate;
-    }
 
-    protected Long getId() {
+    public Long getId() {
         return id;
     }
 
-    protected Boolean getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    protected LocalDateTime getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    protected LocalDateTime getDeactivationDate() {
+    public LocalDateTime getDeactivationDate() {
         return deactivationDate;
     }
 
-    protected void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    protected void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    protected void deactivation(){
+    public void deactivate(){
         this.active = false;
         this.deactivationDate = LocalDateTime.now();
     }
