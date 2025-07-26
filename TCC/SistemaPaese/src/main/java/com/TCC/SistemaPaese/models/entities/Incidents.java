@@ -20,10 +20,10 @@ public class Incidents extends BasicAttributes {
     private OrganizationalUnit organizationalUnit;
     @ManyToOne
     @JoinColumn(name = "created_by", nullable = false)
-    private Employee employeeCreation;
+    private Employee createdBy;
     @ManyToOne
     @JoinColumn(name = "deactivated_by", nullable = false)
-    private Employee employeeDeactivation;
+    private Employee deactivatedBy;
     @Column(name = "finished", nullable = false)
     private Boolean finished = false;
     @Column(name = "completed_on")
@@ -54,12 +54,12 @@ public class Incidents extends BasicAttributes {
         return organizationalUnit;
     }
 
-    public Employee getEmployeeCreation() {
-        return employeeCreation;
+    public Employee getCreatedBy() {
+        return createdBy;
     }
 
-    public Employee getEmployeeDeactivation() {
-        return employeeDeactivation;
+    public Employee getDeactivatedBy() {
+        return deactivatedBy;
     }
 
     public Boolean getFinished() {
@@ -78,8 +78,8 @@ public class Incidents extends BasicAttributes {
         return records;
     }
 
-    public void setEmployeeCreation(Employee employeeCreation) {
-        this.employeeCreation = employeeCreation;
+    public void setCreatedBy(Employee createdBy) {
+        this.createdBy = createdBy;
     }
 
     public void setIncidentNumber(Integer incidentNumber) {
@@ -94,8 +94,8 @@ public class Incidents extends BasicAttributes {
         this.organizationalUnit = organizationalUnit;
     }
 
-    public void setEmployeeDeactivation(Employee employeeDeactivation) {
-        this.employeeDeactivation = employeeDeactivation;
+    public void setDeactivatedBy(Employee deactivatedBy) {
+        this.deactivatedBy = deactivatedBy;
     }
 
     public void incidentFinished(Employee completedBy){

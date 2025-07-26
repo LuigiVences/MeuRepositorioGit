@@ -16,7 +16,8 @@ public class Password {
     @CreationTimestamp
     @Column(name = "changed_at", nullable = false)
     private LocalDateTime changedAt;
-    @JoinColumn(name = "employee_id", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "employee_id", nullable = false, unique = true)
     private Employee employee;
 
     protected Password(){}

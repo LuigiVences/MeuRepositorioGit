@@ -46,13 +46,13 @@ public class Employee extends BasicAttributes{
     @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Incidents> incidentsCreatedBy = new ArrayList<>();
     @OneToMany(mappedBy = "deactivatedBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Record> incidentsDeactivatedBy = new ArrayList<>();
+    private List<Incidents> incidentsDeactivatedBy = new ArrayList<>();
     @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Role> rolesCreatedBy = new ArrayList<>();
     @OneToMany(mappedBy = "deactivatedBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Role> rolesDeactivatedBy = new ArrayList<>();
     @OneToMany(mappedBy = "completedBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Employee> completedBy = new ArrayList<>();
+    private List<Incidents> completedBy = new ArrayList<>();
 
     protected Employee(){}
 
@@ -123,7 +123,7 @@ public class Employee extends BasicAttributes{
         return incidentsCreatedBy;
     }
 
-    public List<Record> getIncidentsDeactivatedBy() {
+    public List<Incidents> getIncidentsDeactivatedBy() {
         return incidentsDeactivatedBy;
     }
 
@@ -135,7 +135,7 @@ public class Employee extends BasicAttributes{
         return rolesDeactivatedBy;
     }
 
-    public List<Employee> getCompletedBy() {
+    public List<Incidents> getCompletedBy() {
         return completedBy;
     }
 
