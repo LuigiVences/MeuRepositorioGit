@@ -2,6 +2,7 @@ package com.TCC.SistemaPaese.models.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -24,6 +25,11 @@ public class Record extends BasicAttributes{
     @ManyToOne
     @JoinColumn(name = "deactivated_by_id")
     private Employee deactivatedBy;
+    @Column(name = "last_update")
+    private LocalDateTime lastUpdate;
+    @ManyToOne
+    @JoinColumn(name = "updated_by_id")
+    private Employee updatedBy;
 
     protected Record(){}
 
@@ -85,5 +91,23 @@ public class Record extends BasicAttributes{
         this.note = note;
     }
 
+    public LocalDateTime getLastUpdate() {
+        return lastUpdate;
+    }
 
+    public Employee getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setDeactivatedBy(Employee deactivatedBy) {
+        this.deactivatedBy = deactivatedBy;
+    }
+
+    public void setLastUpdate() {
+        this.lastUpdate = LocalDateTime.now();
+    }
+
+    public void setUpdatedBy(Employee updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 }

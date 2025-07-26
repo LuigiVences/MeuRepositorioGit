@@ -1,6 +1,7 @@
 package com.TCC.SistemaPaese.models.entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,11 @@ public class Incidents extends BasicAttributes {
     private Employee employeeDeactivation;
     @Column(name = "finished", nullable = false)
     private Boolean finished = false;
+    @Column(name = "completed_on")
+    private LocalDateTime completedOn;
+    @ManyToOne
+    @JoinColumn(name = "completed_by")
+    private Employee completedBy;
     @OneToMany(mappedBy = "incidents", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Record> records = new ArrayList<>();
 
@@ -36,16 +42,65 @@ public class Incidents extends BasicAttributes {
         this.organizationalUnit = organizationalUnit;
     }
 
-    public Integer getIncidentNumber(){
+    public Integer getIncidentNumber() {
         return incidentNumber;
     }
 
-    public LocalDate getDate(){
+    public LocalDate getDateIncident() {
         return dateIncident;
     }
 
-    public OrganizationalUnit geOrganizationalUnit(){
+    public OrganizationalUnit getOrganizationalUnit() {
         return organizationalUnit;
     }
 
+    public Employee getEmployeeCreation() {
+        return employeeCreation;
+    }
+
+    public Employee getEmployeeDeactivation() {
+        return employeeDeactivation;
+    }
+
+    public Boolean getFinished() {
+        return finished;
+    }
+
+    public LocalDateTime getCompletedOn() {
+        return completedOn;
+    }
+
+    public Employee getCompletedBy() {
+        return completedBy;
+    }
+
+    public List<Record> getRecords() {
+        return records;
+    }
+
+    public void setEmployeeCreation(Employee employeeCreation) {
+        this.employeeCreation = employeeCreation;
+    }
+
+    public void setIncidentNumber(Integer incidentNumber) {
+        this.incidentNumber = incidentNumber;
+    }
+
+    public void setDateIncident(LocalDate dateIncident) {
+        this.dateIncident = dateIncident;
+    }
+
+    public void setOrganizationalUnit(OrganizationalUnit organizationalUnit) {
+        this.organizationalUnit = organizationalUnit;
+    }
+
+    public void setEmployeeDeactivation(Employee employeeDeactivation) {
+        this.employeeDeactivation = employeeDeactivation;
+    }
+
+    public void incidentFinished(Employee completedBy){
+        this.completedBy = completedBy;
+        this.completedOn = LocalDateTime.now();
+        this.finished = true;
+    }
 }
