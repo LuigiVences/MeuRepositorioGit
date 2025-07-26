@@ -51,7 +51,7 @@ public class Employee extends BasicAttributes{
     private List<Role> rolesCreatedBy = new ArrayList<>();
     @OneToMany(mappedBy = "deactivatedBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Role> rolesDeactivatedBy = new ArrayList<>();
-    @OneToMany(mappedBy = "completed_by", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "completedBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Employee> completedBy = new ArrayList<>();
 
     protected Employee(){}
