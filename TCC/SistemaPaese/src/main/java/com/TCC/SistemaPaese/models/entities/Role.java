@@ -3,6 +3,9 @@ package com.TCC.SistemaPaese.models.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "roles")
 public class Role extends BasicAttributes{
@@ -18,6 +21,8 @@ public class Role extends BasicAttributes{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "deactivated_by_id")
     private Employee deactivatedBy;
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    private List<EmployeeRole> employees = new ArrayList<>();
 
     protected Role(){}
 
@@ -39,4 +44,15 @@ public class Role extends BasicAttributes{
         return createdBy;
     }
 
+    public Employee getCreatedBy() {
+        return createdBy;
+    }
+
+    public Employee getDeactivatedBy() {
+        return deactivatedBy;
+    }
+
+    public List<EmployeeRole> getEmployees() {
+        return employees;
+    }
 }
