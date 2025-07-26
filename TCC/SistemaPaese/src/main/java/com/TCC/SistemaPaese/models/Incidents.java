@@ -15,7 +15,7 @@ public class Incidents extends BasicAttributes {
     private Integer incidentNumber;
     @Column(name = "date_incident", nullable = false)
     private LocalDate dateIncident;
-    @ManytoOne
+    @ManyToOne
     @JoinColumn(name = "organizational_unit_id", nullable = false)
     private OrganizationalUnit organizationalUnit;
     @ManyToOne
@@ -28,7 +28,7 @@ public class Incidents extends BasicAttributes {
     private Boolean finished = false;
 
 
-    protected Incidentes(){}
+    protected Incidents(){}
 
     public Incidents(Integer incidentNumber, LocalDate dateIncident, OrganizationalUnit organizationalUnit){
         this.incidentNumber = incidentNumber;
