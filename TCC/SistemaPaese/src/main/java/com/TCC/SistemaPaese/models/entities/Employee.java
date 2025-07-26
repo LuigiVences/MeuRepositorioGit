@@ -30,9 +30,6 @@ public class Employee extends BasicAttributes{
     private List<OrganizationalUnit> organizationalUnitsCreatedBy = new ArrayList<>();
     @OneToMany(mappedBy = "deactivatedBy", cascade = CascadeType.ALL)
     private List<OrganizationalUnit>organizationalUnitsDeactivatedBy = new ArrayList<>();
-    @OneToMany(mappedBy = "grantedBy", cascade = CascadeType.ALL)
-    private List<Role> grantedBy = new ArrayList<>();
-    @OneToMany(mappedBy = "revokedBy", cascade = CascadeType.ALL)
-    private List<Role>revokedBy = new ArrayList<>();
+
 
 }
