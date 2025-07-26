@@ -1,13 +1,9 @@
 package com.TCC.SistemaPaese.models.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-
-import javax.annotation.processing.Generated;
 
 @MappedSuperclass
 public abstract class BasicAttributes {
