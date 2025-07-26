@@ -1,11 +1,7 @@
-package com.TCC.SistemaPaese.models;
+package com.TCC.SistemaPaese.models.entities;
 
 import java.time.LocalDate;
 import jakarta.persistence.*;
-
-import com.TCC.SistemaPaese.models.entities.BasicAttributes;
-import com.TCC.SistemaPaese.models.entities.Employee;
-import com.TCC.SistemaPaese.models.entities.OrganizationalUnit;
 
 @Entity
 @Table(name = "incidents")
