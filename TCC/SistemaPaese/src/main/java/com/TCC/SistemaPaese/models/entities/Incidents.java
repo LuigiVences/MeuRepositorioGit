@@ -1,6 +1,9 @@
 package com.TCC.SistemaPaese.models.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -22,7 +25,8 @@ public class Incidents extends BasicAttributes {
     private Employee employeeDeactivation;
     @Column(name = "finished", nullable = false)
     private Boolean finished = false;
-
+    @OneToMany(mappedBy = "incidents", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Record> records = new ArrayList<>();
 
     protected Incidents(){}
 
