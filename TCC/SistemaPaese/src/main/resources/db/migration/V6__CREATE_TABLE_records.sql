@@ -15,6 +15,6 @@ CONSTRAINT pk_records PRIMARY KEY(id),
 CONSTRAINT fk_records_incident FOREIGN KEY(incident_id) REFERENCES incidents(id),
 CONSTRAINT fk_records_created_by FOREIGN KEY(created_by_id) REFERENCES employees(id),
 CONSTRAINT fk_records_deactivated_by FOREIGN KEY(deactivated_by_id) REFERENCES employees(id),
-CONSTRAINT fk_records_updated_by FOREIGN KEY(update_by_id) REFERENCES employees(id)
+CONSTRAINT fk_records_updated_by FOREIGN KEY(updated_by_id) REFERENCES employees(id)
 
 );
