@@ -1,6 +1,7 @@
 package com.TCC.SistemaPaese.models.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "roles")
