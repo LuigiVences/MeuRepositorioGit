@@ -55,4 +55,16 @@ public class Role extends BasicAttributes{
     public List<EmployeeRole> getEmployees() {
         return employees;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDeactivatedBy(Employee deactivatedBy) {
+        this.deactivatedBy = deactivatedBy;
+    }
 }

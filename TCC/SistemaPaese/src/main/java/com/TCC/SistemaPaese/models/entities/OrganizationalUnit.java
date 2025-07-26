@@ -36,24 +36,43 @@ public class OrganizationalUnit extends BasicAttributes{
         this.parent = parent;
     }
 
-    public String  getName(){
+    public String getName() {
         return name;
     }
 
-    public String getType(){
+    public String getType() {
         return type;
     }
 
-    public OrganizationalUnit getParent(){
+    public OrganizationalUnit getParent() {
         return parent;
     }
 
-    public void setName(String name){
+    public Employee getCreatedBy() {
+        return createdBy;
+    }
+
+    public Employee getDeactivatedBy() {
+        return deactivatedBy;
+    }
+
+    public List<OrganizationalUnit> getChildren() {
+        return children;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setType(String type){
+    public void setType(String type) {
         this.type = type;
     }
 
+    public void setParent(OrganizationalUnit parent) {
+        this.parent = parent;
+    }
+
+    public void setDeactivatedBy(Employee deactivatedBy) {
+        this.deactivatedBy = deactivatedBy;
+    }
 }

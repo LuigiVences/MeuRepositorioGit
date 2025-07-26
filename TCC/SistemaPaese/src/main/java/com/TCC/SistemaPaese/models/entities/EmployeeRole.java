@@ -32,4 +32,50 @@ public class EmployeeRole {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "revoked_by")
     private Employee revokedBy;
+
+    protected EmployeeRole(){}
+
+    private EmployeeRole(Employee employee, Role role, Employee grantedBy){
+        this.employee = employee;
+        this.role = role;
+        this.grantedBy = grantedBy;
+    }
+
+    public EmployeeRoleId getId() {
+        return id;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public LocalDateTime getGrantedAt() {
+        return grantedAt;
+    }
+
+    public LocalDateTime getRevokedAt() {
+        return revokedAt;
+    }
+
+    public Employee getGrantedBy() {
+        return grantedBy;
+    }
+
+    public Employee getRevokedBy() {
+        return revokedBy;
+    }
+
+    public void deactivation(Employee revokedBy){
+        this.revokedBy = revokedBy;
+        this.revokedAt = LocalDateTime.now();
+        this.active = false;
+    }
 }
