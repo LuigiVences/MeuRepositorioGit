@@ -22,14 +22,19 @@ public class Employee extends BasicAttributes{
     @ManyToOne
     @JoinColumn(name = "organization_unit_id", nullable = false)
     private OrganizationalUnit organizationalUnit;
-    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Employee> employeeCreatedBy = new ArrayList<>();
-    @OneToMany(mappedBy = "deactivatedBy", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "deactivatedBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Employee> employeeDeactivatedBy = new ArrayList<>();
-    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrganizationalUnit> organizationalUnitsCreatedBy = new ArrayList<>();
-    @OneToMany(mappedBy = "deactivatedBy", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "deactivatedBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrganizationalUnit>organizationalUnitsDeactivatedBy = new ArrayList<>();
-
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<EmployeeRole> roles = new ArrayList<>();
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Record> recordsEmployeesCreatedBy = new ArrayList<>();
+    @OneToMany(mappedBy = "deactivatedBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Record> recordsEmployeesDeactivatedBy = new ArrayList<>();
 
 }
