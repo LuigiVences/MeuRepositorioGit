@@ -1,6 +1,6 @@
 CREATE TABLE employee_roles (
 employee_id INTEGER,
-role_id INTEGER REFERENCES role(id),
+role_id INTEGER,
 active BOOLEAN DEFAULT TRUE NOT NULL,
 granted_at TIMESTAMP NOT NULL,
 granted_by INTEGER NOT NULL,
