@@ -8,6 +8,9 @@ import java.time.LocalTime;
 @Entity
 @Table(name = "records")
 public class Record extends BasicAttributes{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "incident_id", nullable = false)
     private Incidents incidents;
@@ -41,6 +44,11 @@ public class Record extends BasicAttributes{
         this.recordType = recordType;
         this.note = note;
         this.createdBy = createdBy;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
     }
 
     public Incidents getIncidents() {
