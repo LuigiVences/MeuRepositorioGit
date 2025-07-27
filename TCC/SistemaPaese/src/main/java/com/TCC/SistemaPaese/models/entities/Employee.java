@@ -1,6 +1,8 @@
 package com.TCC.SistemaPaese.models.entities;
 
+import com.TCC.SistemaPaese.dto.CreateEmployeeDTO;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
@@ -17,13 +19,13 @@ public class Employee extends BasicAttributes{
     @Column(name = "email", nullable = false, length = 100)
     private String email;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by_id", nullable = false)
+    @JoinColumn(name = "created_by_id")
     private Employee createdBy;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "deactivated_by_id")
     private Employee deactivatedBy;
     @ManyToOne
-    @JoinColumn(name = "organization_unit_id")
+    @JoinColumn(name = "organizational_unit_id")
     private OrganizationalUnit organizationalUnit;
     @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Employee> employeeCreatedBy = new ArrayList<>();
@@ -61,6 +63,12 @@ public class Employee extends BasicAttributes{
         this.email = email;
         this.createdBy = createdBy;
         this.organizationalUnit = organizationalUnit;
+    }
+
+    public Employee(@Valid CreateEmployeeDTO employeeDTO) {
+        this.name = employeeDTO.name();
+        this.email = employeeDTO.email();
+        this.organizationalUnit = employeeDTO.organizational_unit_id();
     }
 
     public String getName() {
