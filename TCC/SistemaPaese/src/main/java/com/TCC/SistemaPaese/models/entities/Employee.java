@@ -23,7 +23,7 @@ public class Employee extends BasicAttributes{
     @JoinColumn(name = "deactivated_by_id")
     private Employee deactivatedBy;
     @ManyToOne
-    @JoinColumn(name = "organization_unit_id", nullable = false)
+    @JoinColumn(name = "organization_unit_id")
     private OrganizationalUnit organizationalUnit;
     @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Employee> employeeCreatedBy = new ArrayList<>();
